@@ -4,7 +4,6 @@
 // and uses that input to determine which milkshakes are the most
 // popular.
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Milkshakes {
@@ -20,7 +19,7 @@ public class Milkshakes {
         double vanillaPercent;
         double chocolatePercent;
         double camelMilkPercent;
-        int totalShakes = 0;
+        int totalShakes;
         boolean isValid = false;
         String choice;
 
@@ -73,7 +72,6 @@ public class Milkshakes {
                         } else {
                             System.out.println("Please enter a whole number: ");
                             input.next();
-                            isValid = false;
                         }
                     }
                     break;
@@ -81,11 +79,11 @@ public class Milkshakes {
 
             // Here's one way to provide an error message.
             // We should discuss how this could be done in a "default" case - or otherwise.
-            if (!choice.equals("1") && !choice.equals("4") && !choice.equals("3") && !choice.equals("4")) {
+            if (!choice.equals("1") && !choice.equals("2") && !choice.equals("3") && !choice.equals("4")) {
                 System.out.println("Please select a valid menu option.");
             }
 
-            // Input loop ends when the user enters 4..
+            // Input loop ends when the user enters 4.
         } while (!choice.equals("4"));
 
         // Processing.
