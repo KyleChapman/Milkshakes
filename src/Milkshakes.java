@@ -18,12 +18,6 @@ public class Milkshakes {
         int vanillaShakes = 0;
         int chocolateShakes = 0;
         int camelMilkShakes = 0;
-        // Variables for percentages, used in the processing near the end of the program.
-        // We could argue about whether these should be declared later:
-        // See https://google.github.io/styleguide/javaguide.html#s4.8.2-variable-declarations .
-        double vanillaPercent;
-        double chocolatePercent;
-        double camelMilkPercent;
         // A total number of shakes, used in division and to check for divide-by-zero.
         int totalShakes;
         // A boolean variable used to check for valid input.
@@ -40,7 +34,7 @@ public class Milkshakes {
             System.out.println("2. Chocolate");
             System.out.println("3. Camel Milk");
             System.out.println("4. Tally and Exit");
-            System.out.println("Please enter a menu choice (1-4): ");
+            System.out.print("Please enter a menu choice (1-4): ");
 
             // Get a menu choice as a string. The strip() method is used to remove whitespace.
             choice = input.nextLine().strip();
@@ -57,8 +51,8 @@ public class Milkshakes {
                             isValid = true;
                         } else {
                             System.out.println("Please enter a whole number: ");
-                            input.next();
                         }
+                        input.nextLine();
                     }
                     break;
                 case "2":
@@ -70,8 +64,8 @@ public class Milkshakes {
                             isValid = true;
                         } else {
                             System.out.println("Please enter a whole number: ");
-                            input.next();
                         }
+                        input.nextLine();
                     }
                     break;
                 case "3":
@@ -83,18 +77,17 @@ public class Milkshakes {
                             isValid = true;
                         } else {
                             System.out.println("Please enter a whole number: ");
-                            input.next();
                         }
+                        input.nextLine();
                     }
                     break;
+                default:
+                    // Here's one way to provide an error message.
+                    // Should we use the default case for this, or not?
+                    if (!choice.equals("4")) {
+                        System.out.println("Please select a valid menu option.");
+                    }
             }
-
-            // Here's one way to provide an error message.
-            // We should discuss how this could be done in a "default" case - or otherwise.
-            if (!choice.equals("1") && !choice.equals("2") && !choice.equals("3") && !choice.equals("4")) {
-                System.out.println("Please select a valid menu option.");
-            }
-
             // Input loop ends when the user enters 4.
         } while (!choice.equals("4"));
 
@@ -104,13 +97,17 @@ public class Milkshakes {
         totalShakes = vanillaShakes + chocolateShakes + camelMilkShakes;
 
         // This part is a check for a total of zero, since dividing by zero breaks math.
-        // For comparison, these comments are the processing from Python (without indentation)!
-        // if total_milk == 0:
         if (totalShakes == 0) {
-            // print("No Milkshakes Sold :(")
             System.out.println("No Milkshakes Sold :(");
         } else {
-            // else:
+            // Variables for percentages, used in the processing near the end of the program.
+            // We could argue about whether these should be declared earlier or later:
+            // See https://google.github.io/styleguide/javaguide.html#s4.8.2-variable-declarations .
+            double vanillaPercent;
+            double chocolatePercent;
+            double camelMilkPercent;
+
+            // Comments here are equivalent Python code.
             // # Making the values percentages
             // vanilla_percent = vanilla/total_milk * 100
             // chocolate_percent = chocolate/total_milk * 100
